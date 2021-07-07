@@ -36,6 +36,8 @@ Simplicity
     No classes (only structs & functions)
     No Inheritance (only composition)
     No Exceptions (only errors)
+    No try catch finally construct
+    No access modifiers (public, private etc)
 
 Built for Concurrency
     Concurrency is built in the language
