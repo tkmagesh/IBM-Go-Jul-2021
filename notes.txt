@@ -1,0 +1,80 @@
+Schedule
+    Commence    : 09:30 Hrs
+    Tea Break   : 11:00 Hrs (20 mins)
+    Lunch Break : 13:00 Hrs (60 mins)
+    Tea Break   : 15:30 Hrs (20 mins)
+    Windup      : 17:30 Hrs
+
+Name
+Experience
+Primary Skillset
+Experience in Golang (if any)
+Any book you read / any shows you watched (recently)
+
+
+
+The Midnight Library
+britbox.com
+David Walliams
+Drive to Survive (F1 Racing)
+Silent Patient
+Pushkin Vertigo
+
+
+Why Golang?
+    Unique Features
+    Take advantage of hardware improvements
+    Concurrency
+    Integrations with 'C'
+
+Paradox of Choice
+    Barry Shwartz
+
+Simplicity
+    25 keywords
+        package, import, func, var, if, for, switch, go, chan, select, range, type, struct, interface, etc
+    No classes (only structs & functions)
+    No Inheritance (only composition)
+    No Exceptions (only errors)
+
+Built for Concurrency
+    Concurrency is built in the language
+        4MB for an OS thread
+        4KB of memory for goroutines
+    Language features for Concurrency
+        go, chan, select, range, close()
+
+Close to hardware
+    No *VM
+    Not interpreted  (but compiled)
+
+Cloud Native Applications
+
+
+Code Organization
+    Modules & Packages
+
+Data Types in Golang
+    bool
+    string
+
+    int
+    int8
+    int16
+    int32
+    int64
+
+    uint
+    uint8
+    uint16
+    uint32
+    uint64
+
+    float32
+    float64
+
+    complex64 (real float32, imaginary float32)
+    complex128 (real float64, imaginary float64)
+
+    byte (alias for uint8)
+    rune (alias for int32, represents 1 unicode character)
