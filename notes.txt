@@ -88,3 +88,16 @@ functions
         assign functions to variables
         functions can be passed as arguments to other functions
         functions can be returned as return values
+
+
+Day-01 assignment
+
+Create a calculator cli
+When the program is executed, display the menu
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+5. Exit
+
+Everytime option 1- 4 are selected, accept the input, process & print the result and display the menu again until the user chooses '5'

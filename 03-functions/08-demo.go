@@ -6,7 +6,19 @@ import (
 )
 
 func main() {
-	result, err := divide(100, 7)
+	var n1, n2 int
+	/*
+		fmt.Println("Enter the no1")
+		fmt.Scanf("%d", &n1)
+
+		fmt.Println("Enter the no2")
+		fmt.Scanf("%d", &n2)
+	*/
+
+	fmt.Println("Enter the numbers [separated by space]")
+	fmt.Scanf("%d %d", &n1, &n2)
+
+	result, err := divide(n1, n2)
 	if err == nil {
 		fmt.Println("Result = ", result)
 		return
