@@ -6,8 +6,12 @@ func main() {
 	result := add(100, 200)
 	fmt.Println(result)
 	//fmt.Println(divide(100, 7))
-	quotient, remainder := divide(100, 7)
-	fmt.Println(quotient, remainder)
+	/*
+		quotient, remainder := divide(100, 7)
+		fmt.Println(quotient, remainder)
+	*/
+	quotient, _ := divide(100, 7)
+	fmt.Println(quotient)
 }
 
 /*
@@ -18,6 +22,10 @@ func add(x int, y int) int {
 
 func add(x, y int) int {
 	return x + y
+}
+
+func add2(x int, y float64) float64 {
+	return float64(x) + y
 }
 
 /*

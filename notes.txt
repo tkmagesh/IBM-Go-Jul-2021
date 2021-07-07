@@ -78,3 +78,11 @@ Data Types in Golang
 
     byte (alias for uint8)
     rune (alias for int32, represents 1 unicode character)
+
+functions
+    - can return more than one value
+    - variadic functions are supported (varying number of arguments)
+    - higher order functions are supported
+        assign functions to variables
+        functions can be passed as arguments to other functions
+        functions can be returned as return values
