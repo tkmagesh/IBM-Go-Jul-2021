@@ -135,3 +135,18 @@ Go Modules (from go 1.13)
     3. to create a build
         go build
         go build -o <binary name>
+
+
+Collections
+    array
+        fixed size
+    slice
+        varying size
+        wrapper for an array
+        use 'append' function to add more items in to the slice
+    map
+        key/value pair collection
+
+
+memory allocation in go
+    https://research.swtch.com/godata
