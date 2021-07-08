@@ -101,3 +101,33 @@ When the program is executed, display the menu
 5. Exit
 
 Everytime option 1- 4 are selected, accept the input, process & print the result and display the menu again until the user chooses '5'
+
+
+Day-2
+Environment Variables for the go tools
+    to list all the variables
+        go env
+
+$GOROOT
+
+$GOPATH
+    bin
+    pkg
+        code for all the third party packages are imported
+    src
+        github.com
+            tkmagesh
+                <repo-name> => application
+
+Go Modules (from go 1.13)
+    go.mod (module)
+        meta data information about the application
+            module name
+            go runtime version
+            list of other third party modules that the application depends on
+
+    1. creating a module
+        go mod init <module-name>
+
+    2. to install a third party package
+        go get <package repo address>
