@@ -131,3 +131,7 @@ Go Modules (from go 1.13)
 
     2. to install a third party package
         go get <package repo address>
+
+    3. to create a build
+        go build
+        go build -o <binary name>
