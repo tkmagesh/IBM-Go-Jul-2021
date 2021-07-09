@@ -19,6 +19,18 @@ func (product *Product) ApplyDiscount(discount float32) {
 	product.Cost = product.Cost * ((100 - discount) / 100)
 }
 
+type PerishableProduct struct {
+	Product
+	Expiry string
+}
+
+func (pp *PerishableProduct) Format() string {
+	//return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %s, Expiry = %s\n", pp.Id, pp.Name, pp.Cost, pp.Units, pp.Category, pp.Expiry)
+	//using the Product.Format()
+	return fmt.Sprintf("%s, Expiry = %s\n", pp.Product.Format(), pp.Expiry)
+}
+
+
 //products
 
 type Products []Product
@@ -118,4 +130,14 @@ func main() {
 	stationaryProducts := products.Filter(stationaryProductCriteria)
 	fmt.Println("Stationary Products")
 	stationaryProducts.PrintList()
+
+	fmt.Println()
+	fmt.Println("Perishable Product")
+	grapes := PerishableProduct{Product{150, "Grapes", 70, 50, "Food"}, "2 Days"}
+	//Inheriting the methods from the composed type (Product)
+	fmt.Print(grapes.Format())
+	grapes.ApplyDiscount(10)
+	fmt.Println("After applying discount")
+	fmt.Print(grapes.Format())
+	
 }
