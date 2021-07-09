@@ -24,16 +24,16 @@ func main() {
 	ch2 := make(chan string)
 	go print("Hello", 1*time.Second, ch1, ch2)
 	go print("World", 3*time.Second, ch2, ch1)
-	ch1 <- "start"
+	ch2 <- "start"
 	var input string
 	fmt.Scanln(&input)
 }
 
-func print(s string, delay time.Duration, ch1 chan string, ch2 chan string) {
+func print(s string, delay time.Duration, x chan string, y chan string) {
 	for i := 0; i < 5; i++ {
-		<-ch1
+		<-x
 		println(s)
 		time.Sleep(delay)
-		ch2 <- "done"
+		y <- "done"
 	}
 }
