@@ -10,7 +10,14 @@ type Product struct {
 	Category string
 }
 
+/* 
 func (product *Product) Format() string {
+	return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %s\n", product.Id, product.Name, product.Cost, product.Units, product.Category)
+} 
+*/
+
+/* implementing the Stringer interface */
+func (product Product) String() string {
 	return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %s\n", product.Id, product.Name, product.Cost, product.Units, product.Category)
 }
 
@@ -24,10 +31,10 @@ type PerishableProduct struct {
 	Expiry string
 }
 
-func (pp *PerishableProduct) Format() string {
+func (pp PerishableProduct) String() string {
 	//return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %s, Expiry = %s\n", pp.Id, pp.Name, pp.Cost, pp.Units, pp.Category, pp.Expiry)
 	//using the Product.Format()
-	return fmt.Sprintf("%s, Expiry = %s\n", pp.Product.Format(), pp.Expiry)
+	return fmt.Sprintf("%s, Expiry = %s\n", pp.Product, pp.Expiry)
 }
 
 
@@ -35,10 +42,13 @@ func (pp *PerishableProduct) Format() string {
 
 type Products []Product
 
-func (products *Products) PrintList() {
-	for _, p := range *products {
-		fmt.Print(p.Format())
+/* implementing the Stringer interface */
+func (products Products) String() string {
+	result := ""
+	for _, p := range products {
+		result += fmt.Sprintf("%s", p)
 	}
+	return result
 }
 
 func (products *Products) IndexOf(product Product) int {
@@ -85,9 +95,9 @@ func (products *Products) Filter(criteria func(Product) bool) *Products {
 func main() {
 	pencil := Product{107, "Pencil", 2, 100, "Stationary"}
 	//fmt.Print(Format(pencil))
-	fmt.Print(pencil.Format())
+	fmt.Print(pencil)
 	pencil.ApplyDiscount(10)
-	fmt.Print(pencil.Format())
+	fmt.Print(pencil)
 
 	//manipulating products
 
@@ -129,15 +139,15 @@ func main() {
 
 	stationaryProducts := products.Filter(stationaryProductCriteria)
 	fmt.Println("Stationary Products")
-	stationaryProducts.PrintList()
+	fmt.Println(stationaryProducts)
 
 	fmt.Println()
 	fmt.Println("Perishable Product")
 	grapes := PerishableProduct{Product{150, "Grapes", 70, 50, "Food"}, "2 Days"}
 	//Inheriting the methods from the composed type (Product)
-	fmt.Print(grapes.Format())
+	fmt.Print(grapes)
 	grapes.ApplyDiscount(10)
 	fmt.Println("After applying discount")
-	fmt.Print(grapes.Format())
+	fmt.Print(grapes)
 	
 }
