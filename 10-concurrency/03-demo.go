@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+//Communicate by sharing memory
 var result int
 
 var wg *sync.WaitGroup = &sync.WaitGroup{}
