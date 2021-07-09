@@ -163,3 +163,12 @@ Aliquip magna irure eiusmod sit elit ipsum incididunt qui labore fugiat culpa ut
 
 The max occurence of words by size of the word = 15 (word size = 4)
 words := strings.Split(str, " ")
+
+
+Assignment
+implement sort functionality for products 
+    IMPORTANT : use the sort.Sort() method
+
+    Default sort : by id
+    implement apis for sort by name, cost, units, category etc
+    
