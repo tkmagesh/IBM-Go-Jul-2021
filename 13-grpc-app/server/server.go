@@ -18,6 +18,8 @@ type server struct {
 func (s *server) Add(ctx context.Context, req *proto.AddRequest) (*proto.AddResponse, error) {
 	x := req.GetX()
 	y := req.GetY()
+	fmt.Println("Delaying the response")
+	time.Sleep(8 * time.Second)
 	log.Printf("Add(%d, %d) = %d", x, y, x+y)
 	result := x + y
 	response := &proto.AddResponse{Result: result}
