@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"grpc-app/proto"
 	"io"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -42,6 +44,31 @@ func (server *server) Average(averageStream proto.AppService_AverageServer) erro
 	}
 	return nil
 }
+
+func (s *server) GeneratePrime(req *proto.PrimeNumberRequest, resStream proto.AppService_GeneratePrimeServer) error {
+	rangeStart := req.GetRangeStart()
+	rangeEnd := req.GetRangeEnd()
+	log.Printf("GeneratePrime(%d, %d)", rangeStart, rangeEnd)
+	for i := rangeStart; i <= rangeEnd; i++ {
+		if isPrime(i) {
+			fmt.Println("Sending Prime No ", i)
+			res := &proto.PrimeNumberResponse{PrimeNumber: i}
+			resStream.Send(res)
+			time.Sleep(500 * time.Millisecond)
+		}
+	}
+	return nil
+}
+
+func isPrime(n int64) bool {
+	for i := int64(2); i <= (n / 2); i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
 	listener, err := net.Listen("tcp", "localhost:52000")
 	if err != nil {
