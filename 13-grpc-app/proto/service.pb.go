@@ -325,6 +325,156 @@ func (x *PrimeNumberResponse) GetPrimeNumber() int64 {
 	return 0
 }
 
+//bidirectional streaming
+type Greeting struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	FirstName string `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName  string `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+}
+
+func (x *Greeting) Reset() {
+	*x = Greeting{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_service_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Greeting) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Greeting) ProtoMessage() {}
+
+func (x *Greeting) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_service_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Greeting.ProtoReflect.Descriptor instead.
+func (*Greeting) Descriptor() ([]byte, []int) {
+	return file_proto_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Greeting) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *Greeting) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+type GreetEveryoneRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Greeting *Greeting `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
+}
+
+func (x *GreetEveryoneRequest) Reset() {
+	*x = GreetEveryoneRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_service_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GreetEveryoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GreetEveryoneRequest) ProtoMessage() {}
+
+func (x *GreetEveryoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_service_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GreetEveryoneRequest.ProtoReflect.Descriptor instead.
+func (*GreetEveryoneRequest) Descriptor() ([]byte, []int) {
+	return file_proto_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GreetEveryoneRequest) GetGreeting() *Greeting {
+	if x != nil {
+		return x.Greeting
+	}
+	return nil
+}
+
+type GreetEveryoneResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *GreetEveryoneResponse) Reset() {
+	*x = GreetEveryoneResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_service_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GreetEveryoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GreetEveryoneResponse) ProtoMessage() {}
+
+func (x *GreetEveryoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_service_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GreetEveryoneResponse.ProtoReflect.Descriptor instead.
+func (*GreetEveryoneResponse) Descriptor() ([]byte, []int) {
+	return file_proto_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GreetEveryoneResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_proto_service_proto protoreflect.FileDescriptor
 
 var file_proto_service_proto_rawDesc = []byte{
@@ -348,7 +498,19 @@ var file_proto_service_proto_rawDesc = []byte{
 	0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62,
 	0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x70, 0x72, 0x69, 0x6d, 0x65, 0x4e,
-	0x75, 0x6d, 0x62, 0x65, 0x72, 0x32, 0xc0, 0x01, 0x0a, 0x0a, 0x41, 0x70, 0x70, 0x53, 0x65, 0x72,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x46, 0x0a, 0x08, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e,
+	0x67, 0x12, 0x1d, 0x0a, 0x0a, 0x66, 0x69, 0x72, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65,
+	0x12, 0x1b, 0x0a, 0x09, 0x6c, 0x61, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x43, 0x0a,
+	0x14, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2b, 0x0a, 0x08, 0x67, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e,
+	0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
+	0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x08, 0x67, 0x72, 0x65, 0x65, 0x74, 0x69,
+	0x6e, 0x67, 0x22, 0x31, 0x0a, 0x15, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79,
+	0x6f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x32, 0x90, 0x02, 0x0a, 0x0a, 0x41, 0x70, 0x70, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x12, 0x2c, 0x0a, 0x03, 0x41, 0x64, 0x64, 0x12, 0x11, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
@@ -360,7 +522,12 @@ var file_proto_service_proto_rawDesc = []byte{
 	0x19, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d,
 	0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x2e, 0x50, 0x72, 0x69, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x08, 0x5a, 0x06, 0x2f, 0x70, 0x72, 0x6f,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x12, 0x4e, 0x0a, 0x0d, 0x47, 0x72, 0x65, 0x65,
+	0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x12, 0x1b, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47,
+	0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x30, 0x01, 0x42, 0x08, 0x5a, 0x06, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
@@ -376,27 +543,33 @@ func file_proto_service_proto_rawDescGZIP() []byte {
 	return file_proto_service_proto_rawDescData
 }
 
-var file_proto_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_proto_service_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_service_proto_goTypes = []interface{}{
-	(*AddRequest)(nil),          // 0: proto.AddRequest
-	(*AddResponse)(nil),         // 1: proto.AddResponse
-	(*AverageRequest)(nil),      // 2: proto.AverageRequest
-	(*AverageResponse)(nil),     // 3: proto.AverageResponse
-	(*PrimeNumberRequest)(nil),  // 4: proto.PrimeNumberRequest
-	(*PrimeNumberResponse)(nil), // 5: proto.PrimeNumberResponse
+	(*AddRequest)(nil),            // 0: proto.AddRequest
+	(*AddResponse)(nil),           // 1: proto.AddResponse
+	(*AverageRequest)(nil),        // 2: proto.AverageRequest
+	(*AverageResponse)(nil),       // 3: proto.AverageResponse
+	(*PrimeNumberRequest)(nil),    // 4: proto.PrimeNumberRequest
+	(*PrimeNumberResponse)(nil),   // 5: proto.PrimeNumberResponse
+	(*Greeting)(nil),              // 6: proto.Greeting
+	(*GreetEveryoneRequest)(nil),  // 7: proto.GreetEveryoneRequest
+	(*GreetEveryoneResponse)(nil), // 8: proto.GreetEveryoneResponse
 }
 var file_proto_service_proto_depIdxs = []int32{
-	0, // 0: proto.AppService.Add:input_type -> proto.AddRequest
-	2, // 1: proto.AppService.Average:input_type -> proto.AverageRequest
-	4, // 2: proto.AppService.GeneratePrime:input_type -> proto.PrimeNumberRequest
-	1, // 3: proto.AppService.Add:output_type -> proto.AddResponse
-	3, // 4: proto.AppService.Average:output_type -> proto.AverageResponse
-	5, // 5: proto.AppService.GeneratePrime:output_type -> proto.PrimeNumberResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: proto.GreetEveryoneRequest.greeting:type_name -> proto.Greeting
+	0, // 1: proto.AppService.Add:input_type -> proto.AddRequest
+	2, // 2: proto.AppService.Average:input_type -> proto.AverageRequest
+	4, // 3: proto.AppService.GeneratePrime:input_type -> proto.PrimeNumberRequest
+	7, // 4: proto.AppService.GreetEveryone:input_type -> proto.GreetEveryoneRequest
+	1, // 5: proto.AppService.Add:output_type -> proto.AddResponse
+	3, // 6: proto.AppService.Average:output_type -> proto.AverageResponse
+	5, // 7: proto.AppService.GeneratePrime:output_type -> proto.PrimeNumberResponse
+	8, // 8: proto.AppService.GreetEveryone:output_type -> proto.GreetEveryoneResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_proto_service_proto_init() }
@@ -477,6 +650,42 @@ func file_proto_service_proto_init() {
 				return nil
 			}
 		}
+		file_proto_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Greeting); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_service_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GreetEveryoneRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_service_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GreetEveryoneResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -484,7 +693,7 @@ func file_proto_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -516,6 +725,8 @@ type AppServiceClient interface {
 	Average(ctx context.Context, opts ...grpc.CallOption) (AppService_AverageClient, error)
 	//server streaming
 	GeneratePrime(ctx context.Context, in *PrimeNumberRequest, opts ...grpc.CallOption) (AppService_GeneratePrimeClient, error)
+	//bidirectional streaming
+	GreetEveryone(ctx context.Context, opts ...grpc.CallOption) (AppService_GreetEveryoneClient, error)
 }
 
 type appServiceClient struct {
@@ -601,6 +812,37 @@ func (x *appServiceGeneratePrimeClient) Recv() (*PrimeNumberResponse, error) {
 	return m, nil
 }
 
+func (c *appServiceClient) GreetEveryone(ctx context.Context, opts ...grpc.CallOption) (AppService_GreetEveryoneClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_AppService_serviceDesc.Streams[2], "/proto.AppService/GreetEveryone", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &appServiceGreetEveryoneClient{stream}
+	return x, nil
+}
+
+type AppService_GreetEveryoneClient interface {
+	Send(*GreetEveryoneRequest) error
+	Recv() (*GreetEveryoneResponse, error)
+	grpc.ClientStream
+}
+
+type appServiceGreetEveryoneClient struct {
+	grpc.ClientStream
+}
+
+func (x *appServiceGreetEveryoneClient) Send(m *GreetEveryoneRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *appServiceGreetEveryoneClient) Recv() (*GreetEveryoneResponse, error) {
+	m := new(GreetEveryoneResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // AppServiceServer is the server API for AppService service.
 type AppServiceServer interface {
 	//request & response
@@ -609,6 +851,8 @@ type AppServiceServer interface {
 	Average(AppService_AverageServer) error
 	//server streaming
 	GeneratePrime(*PrimeNumberRequest, AppService_GeneratePrimeServer) error
+	//bidirectional streaming
+	GreetEveryone(AppService_GreetEveryoneServer) error
 }
 
 // UnimplementedAppServiceServer can be embedded to have forward compatible implementations.
@@ -623,6 +867,9 @@ func (*UnimplementedAppServiceServer) Average(AppService_AverageServer) error {
 }
 func (*UnimplementedAppServiceServer) GeneratePrime(*PrimeNumberRequest, AppService_GeneratePrimeServer) error {
 	return status.Errorf(codes.Unimplemented, "method GeneratePrime not implemented")
+}
+func (*UnimplementedAppServiceServer) GreetEveryone(AppService_GreetEveryoneServer) error {
+	return status.Errorf(codes.Unimplemented, "method GreetEveryone not implemented")
 }
 
 func RegisterAppServiceServer(s *grpc.Server, srv AppServiceServer) {
@@ -694,6 +941,32 @@ func (x *appServiceGeneratePrimeServer) Send(m *PrimeNumberResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _AppService_GreetEveryone_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(AppServiceServer).GreetEveryone(&appServiceGreetEveryoneServer{stream})
+}
+
+type AppService_GreetEveryoneServer interface {
+	Send(*GreetEveryoneResponse) error
+	Recv() (*GreetEveryoneRequest, error)
+	grpc.ServerStream
+}
+
+type appServiceGreetEveryoneServer struct {
+	grpc.ServerStream
+}
+
+func (x *appServiceGreetEveryoneServer) Send(m *GreetEveryoneResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *appServiceGreetEveryoneServer) Recv() (*GreetEveryoneRequest, error) {
+	m := new(GreetEveryoneRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _AppService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.AppService",
 	HandlerType: (*AppServiceServer)(nil),
@@ -713,6 +986,12 @@ var _AppService_serviceDesc = grpc.ServiceDesc{
 			StreamName:    "GeneratePrime",
 			Handler:       _AppService_GeneratePrime_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "GreetEveryone",
+			Handler:       _AppService_GreetEveryone_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "proto/service.proto",

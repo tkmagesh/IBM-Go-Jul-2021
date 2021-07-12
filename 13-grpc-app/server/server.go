@@ -69,6 +69,25 @@ func isPrime(n int64) bool {
 	return true
 }
 
+//bidirectional streaming
+func (s *server) GreetEveryone(stream proto.AppService_GreetEveryoneServer) error {
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		greetingData := req.GetGreeting()
+		fmt.Println("Received ", greetingData)
+		greetMsg := fmt.Sprintf("Hi %s %s!", greetingData.GetFirstName(), greetingData.GetLastName())
+		greetRes := &proto.GreetEveryoneResponse{Message: greetMsg}
+		stream.Send(greetRes)
+		time.Sleep(2 * time.Second)
+	}
+}
+
 func main() {
 	listener, err := net.Listen("tcp", "localhost:52000")
 	if err != nil {
