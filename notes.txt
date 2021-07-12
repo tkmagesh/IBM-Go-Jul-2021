@@ -182,3 +182,72 @@ aggregate them in the main function and print the final result (330)
 
 IO
     Reader, Writer
+
+
+gRPC
+
+    Web
+        IP
+        TCP
+        HTTP
+        XML
+
+        Web Services
+            SOAP (Simple Object Access Protocol)
+            WSDL (Web Services Description Language)
+
+        REST (Representational State Transfer)
+            Treat the data as a web resource
+
+            Address (URL)
+                http://myApp.com/products
+                http://myApp.com/products/100
+
+            HTTP Methods (Verbs)
+                GET
+                POST
+                PUT
+                PATCH
+                DELETE
+                HEAD
+                OPTIONS
+
+            HTTP Status codes
+                200 OK
+                201 Created
+                202 Accepted
+                302 Object Moved
+                403 Forbidden
+                404 Not Found
+                500 Internal Server Error
+                503 Service Unavailable
+
+        HTTP/1.1
+            Stateless Protocol
+            Data in Text
+            Realtime updates are not possible
+
+Serailization
+    Protocol Buffers
+
+Modes of Communication
+    request & response
+    Client Streaming
+    Server Streaming
+    Client & Server Streaming (Bidirectional Streaming)
+
+Tools:
+go get -u github.com/golang/protobuf/protoc-gen-go
+OR
+brew install protobuf
+brow install protoc-gen-go
+
+
+go get -u google.golang.org/grpc
+
+
+
+To generate the proxy and stub for the .proto file
+    protoc ./proto/service.proto --go_out=plugins=grpc:.
+    OR
+    protoc --go_out=. --go_opt=paths=source_relative  proto/service.proto
