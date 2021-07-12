@@ -13,6 +13,20 @@ message AddResponse{
     int64 result = 1;
 }
 
-service AppService{
-    rpc Add(AddRequest) returns (AddResponse);
+//client streaming
+message AverageRequest{
+    int64 no = 1;
 }
+
+message AverageResponse{
+    int64 result = 1;
+}
+
+service AppService{
+    //request & response
+    rpc Add(AddRequest) returns (AddResponse);
+
+    //client streaming
+    rpc Average(stream AverageRequest) returns (AverageResponse);
+}
+
