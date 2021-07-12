@@ -10,16 +10,23 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type server struct {
 }
 
 func (s *server) Add(ctx context.Context, req *proto.AddRequest) (*proto.AddResponse, error) {
+
 	x := req.GetX()
 	y := req.GetY()
 	fmt.Println("Delaying the response")
 	time.Sleep(8 * time.Second)
+	if ctx.Err() == context.DeadlineExceeded {
+		fmt.Println("The client cancelled the request")
+		return nil, status.Errorf(codes.Canceled, "Client cancelled the request")
+	}
 	log.Printf("Add(%d, %d) = %d", x, y, x+y)
 	result := x + y
 	response := &proto.AddResponse{Result: result}
